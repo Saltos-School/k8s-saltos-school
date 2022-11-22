@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: simple-service
 spec:
   selector:
-    app: nginx
+    app: simple
   type: ClusterIP
   ports:
     - protocol: TCP
