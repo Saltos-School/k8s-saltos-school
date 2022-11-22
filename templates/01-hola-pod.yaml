@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-example
+  name: pod-example-2
 spec:
   containers:
   - name: ubuntu
     image: ubuntu:trusty
     command: ["echo"]
-    args: ["Hola Kubernetes"]
+    args: ["Hola Kubernetes Paul"]
