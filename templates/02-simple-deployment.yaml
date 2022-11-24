@@ -29,6 +29,11 @@ spec:
             configMapKeyRef:
               name: mi-configuracion
               key: limite-maximo
+        - name: SECRETO
+          valueFrom:
+            secretKeyRef:
+              name: mis-secretos
+              key: password
 
 ---
 
@@ -40,3 +45,15 @@ metadata:
     app: simple
 data:
   limite-maximo: "ilitimado"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name:  mis-secretos
+  labels:
+    app: simple
+data:
+  password: MTIzNDU=
+type: Opaque
