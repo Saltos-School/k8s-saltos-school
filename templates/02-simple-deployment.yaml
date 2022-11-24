@@ -16,6 +16,11 @@ spec:
     spec:
       containers:
       - name: simple
-        image: nginx:1.16
+        image: nginx:1.22.1
         ports:
         - containerPort: 80
+        env:
+        - name: PRUEBA
+          value: hola
+        - name: NGINX_PORT
+          value: "80"
