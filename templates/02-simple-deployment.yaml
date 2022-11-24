@@ -29,11 +29,21 @@ spec:
             configMapKeyRef:
               name: mi-configuracion
               key: limite-maximo
+        - name: PRUEBA2_CONFIG
+          valueFrom:
+            configMapKeyRef:
+              name: mi-configuracion
+              key: limite-minimo
         - name: SECRETO
           valueFrom:
             secretKeyRef:
               name: mis-secretos
               key: password
+        - name: ADMIN
+          valueFrom:
+            secretKeyRef:
+              name: mis-secretos
+              key: admin
 
 ---
 
@@ -45,6 +55,7 @@ metadata:
     app: simple
 data:
   limite-maximo: "ilitimado"
+  limite-minimo: "0"
 
 ---
 
@@ -56,4 +67,5 @@ metadata:
     app: simple
 data:
   password: MTIzNDU=
+  admin: YWRtaW5zZWNyZXRv
 type: Opaque
