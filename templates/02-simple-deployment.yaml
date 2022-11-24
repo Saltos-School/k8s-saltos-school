@@ -24,3 +24,19 @@ spec:
           value: hola
         - name: NGINX_PORT
           value: "80"
+        - name: PRUEBA_CONFIG
+          valueFrom:
+            configMapKeyRef:
+              name: mi-configuracion
+              key: limite-maximo
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mi-configuracion
+  labels:
+    app: simple
+data:
+  limite-maximo: "ilitimado"
