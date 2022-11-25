@@ -1,6 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  paul
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: paul
   name: simple-deployment
   labels:
     app: simple
@@ -11,12 +19,13 @@ spec:
       app: simple
   template:
     metadata:
+      namespace: paul
       labels:
         app: simple
     spec:
       containers:
       - name: simple
-        image: psaltos/simple
+        image: psaltos/simple:2.0
         ports:
         - containerPort: 80
         env:
@@ -50,6 +59,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: paul
   name: mi-configuracion
   labels:
     app: simple
@@ -64,6 +74,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
+  namespace: paul
   name:  mis-secretos
   labels:
     app: simple
