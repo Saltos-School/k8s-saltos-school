@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name:  paul
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name:  paul
 
 ---
 
@@ -27,12 +27,12 @@ spec:
       - name: simple
         image: psaltos/simple:2.0
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
         - name: PRUEBA
           value: hola
         - name: NGINX_PORT
-          value: "80"
+          value: "8080"
         - name: PRUEBA_CONFIG
           valueFrom:
             configMapKeyRef:
