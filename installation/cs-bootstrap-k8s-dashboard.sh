@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
+
+#kubectl proxy --address=0.0.0.0
+
+kubectl create serviceaccount dashboard -n default
+
+kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
+
+kubectl -n default create token dashboard
+
+kubectl get pods --all-namespaces
+
+kubectl proxy --address=0.0.0.0 --accept-hosts '.*'
+
+# http://k8s-master.csaltos.com:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+eyJhbGciOiJSUzI1NiIsImtpZCI6InZDLUVoY19WY3NHMktNMGtRMkV1UUdFVFhtSmd4WlkzVzdMWjRxdDQ5ekEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjY4NzI1MDM0LCJpYXQiOjE2Njg3MjE0MzQsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImRhc2hib2FyZCIsInVpZCI6ImM5NTI5MWQ3LTgxODAtNDQyYS1iYWZkLTMxZWJjMmM5YjAxNyJ9fSwibmJmIjoxNjY4NzIxNDM0LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDpkYXNoYm9hcmQifQ.Jtfy8Rfnqwlj1IuSMWdOq4dRd3VNh6GXOejpbKZeZwHuCGBE8h4ILXE0V5hZbfPfwOBHEYz0pAQuFtRReNgtVfoXaOxosoDULRL8JB_MP1Z_MeWfORDA_qM3gZuyS90oqPkk_O_zzjVsmeIk1iW5WhaWe8rpq3XqZSPVqdxU3ucTDbhJq6dZV0HrxCo3ryR1BpIg0JH1h0U32V-bQiMQ0uQCoMB8R86KBpfIrbU_fDzkpZLwiAX2fZQet5IgNQqhRVIq_3D0WzoxukygXBX_YD7RDzuu5QaUO5iNzTQ6r1IBXx0lLEhdW5y4qVwUTh0KdJKK7V_KrF1aJm3OkMjslQ
