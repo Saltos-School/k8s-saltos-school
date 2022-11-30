@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: paul
   name: ebs-claim
 spec:
   accessModes:
@@ -15,6 +16,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: paul
   name: app
 spec:
   containers:
@@ -35,6 +37,7 @@ spec:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
+  namespace: paul
   name: ebs-sc
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
