@@ -5,7 +5,7 @@ kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
   name: redis
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: redis
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: redis-configuration
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -61,7 +61,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: redis-health
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -167,7 +167,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: redis-scripts
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -245,7 +245,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-headless
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -268,7 +268,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-master
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -293,7 +293,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-replicas
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -318,7 +318,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: redis-master
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
@@ -473,7 +473,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: redis-replicas
-  namespace: paul
+  namespace: "default"
   labels:
     app.kubernetes.io/name: redis
     app.kubernetes.io/instance: redis
