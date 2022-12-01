@@ -27,7 +27,17 @@ spec:
         - name: paul-storage
           hostPath:
             path: /datos-paul
+        - name: nginx-storage
+          hostPath:
+            path: /nginx-html
       containers:
+#      - name: otro
+#        image: mongodb
+#        ports:
+#          containerPort: 27017
+#        volumeMounts:
+#          - mountPath: /mnt/paul
+#            name: paul-storage
       - name: simple
         image: psaltos/simple:2.0
         ports:
@@ -35,6 +45,8 @@ spec:
         volumeMounts:
           - mountPath: /mnt/paul
             name: paul-storage
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
         env:
         - name: PRUEBA
           value: hola
