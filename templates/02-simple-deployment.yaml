@@ -47,6 +47,10 @@ spec:
             name: paul-storage
           - mountPath: /usr/share/nginx/html
             name: nginx-storage
+#        livenessProbe:
+#          exec:
+#            common:
+#              - ping
         env:
         - name: PRUEBA
           value: hola
