@@ -23,11 +23,18 @@ spec:
       labels:
         app: simple
     spec:
+      volumes:
+        - name: paul-storage
+          hostPath:
+            path: /datos-paul
       containers:
       - name: simple
         image: psaltos/simple:2.0
         ports:
         - containerPort: 8080
+        volumeMounts:
+          - mountPath: /mnt/paul
+            name: paul-storage
         env:
         - name: PRUEBA
           value: hola
